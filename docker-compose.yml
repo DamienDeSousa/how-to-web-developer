@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+###> doctrine/doctrine-bundle ###
+  database:
+    # arm compatible mysql docker image
+    image: mysql/mysql-server:${MYSQL_VERSION:-8.0} # arm and x86/x64 compatible mysql image
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-su_myapp}
+      # You should definitely change the password in production
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-ChangeMe}
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - db-data:/var/lib/mysql
+      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+      # - ./docker/db/data:/var/lib/mysql:rw
+  server:
+    build: ./docker/php/
+    volumes:
+      - ./:/var/www/sulu.lo/
+    ports:
+      - "8080:80"
+    depends_on:
+      - database
+
+  adminer:
+    image: adminer:latest
+    depends_on:
+      - database
+    volumes:
+      - "adminer-data:/var/www/html:rw"
+    ports:
+      - "8081:8080"
+
+
+volumes:
+  db-data: {}
+  adminer-data: {}

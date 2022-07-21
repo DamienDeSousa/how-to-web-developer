@@ -1,0 +1,32 @@
+@import "~bootstrap/scss/bootstrap";
+
+@font-face {
+    font-family: "Garamond";
+    src: url("../fonts/EBGaramond12-Regular.otf");
+}
+
+body {
+    font-family: "Garamond", sans-serif;
+}
+
+.btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+/*** Specific for header content ***/
+.top-menu-position {
+    top: 0;
+}
+
+.start-menu-position {
+    left: 0;
+}
+
+@include media-breakpoint-up(md) {
+    .start-menu-position {
+        left: 50%;
+        transform: translate(-50%);
+    }
+}
+/*********************************/
