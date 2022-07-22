@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <key>header</key>
+
+    <meta>
+        <title lang="en">Header</title>
+        <title lang="fr">Entête</title>
+        <title lang="fr_fr">Entête</title>
+    </meta>
+
+    <properties>
+        <property name="title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="fr">Titre</title>
+                <title lang="fr_fr">Titre</title>
+            </meta>
+        </property>
+
+        <property name="jumbotron_image" type="single_media_selection">
+            <meta>
+                <title lang="en">Header Image</title>
+                <title lang="fr_fr">Image d'entête</title>
+                <title lang="fr">Image d'entête</title>
+            </meta>
+        </property>
+
+        <property name="homepage_title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="en">Homepage title text</title>
+                <title lang="fr_fr">Titre de la page d'accueil</title>
+                <title lang="fr">Titre de la page d'accueil</title>
+            </meta>
+        </property>
+    </properties>
+
+    <areas>
+        <area key="snippet_header">
+            <meta>
+                <title lang="en">Header</title>
+                <title lang="fr">Entête</title>
+                <title lang="fr_fr">Entête</title>
+            </meta>
+        </area>
+    </areas>
+</template>

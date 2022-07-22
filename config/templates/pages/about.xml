@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <key>about</key>
+
+    <view>pages/about</view>
+    <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
+
+    <meta>
+        <title lang="en">About</title>
+        <title lang="fr">À propos</title>
+        <title lang="fr_fr">À propos</title>
+    </meta>
+
+    <properties>
+        <property name="title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="fr">Titre</title>
+                <title lang="fr_fr">Titre</title>
+            </meta>
+            <params>
+                <param name="headline" value="true"/>
+            </params>
+
+            <tag name="sulu.rlp.part"/>
+        </property>
+
+        <property name="url" type="resource_locator" mandatory="true">
+            <meta>
+                <title lang="en">Resourcelocator</title>
+                <title lang="fr">Uri</title>
+                <title lang="fr_fr">Uri</title>
+            </meta>
+
+            <tag name="sulu.rlp"/>
+        </property>
+        
+        <block name="blocks" minOccurs="0" maxOccurs="1">
+            <meta>
+                <title lang="en">Description</title>
+                <title lang="fr">Description</title>
+                <title lang="fr_fr">Description</title>
+            </meta>
+            <types>
+                <type name="text_and_image">
+                    <properties>
+                        <property name="image" type="single_media_selection">
+                            <meta>
+                                <title lang="en">Image</title>
+                                <title lang="fr_fr">Image</title>
+                                <title lang="fr">Image</title>
+                            </meta>
+                        </property>
+                        <property name="description" type="text_editor">
+                            <meta>
+                                <title lang="en">Description</title>
+                                <title lang="fr_fr">Description</title>
+                                <title lang="fr">Description</title>
+                            </meta>
+                        </property>
+                    </properties>
+                </type>
+            </types>
+        </block>
+    </properties>
+</template>

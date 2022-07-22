@@ -2,6 +2,9 @@ MAKE=make
 
 SHELL := /bin/bash
 
+DOCKER_COMPOSE := docker-compose
+DOCKER_SERVER := $(DOCKER_COMPOSE) exec server
+
 CURRENT_UID := $(shell id -u)
 CURRENT_GID := $(shell id -g)
 CURRENT_PWD := $(shell pwd)
@@ -11,19 +14,31 @@ help:
 
 fix-permission: ## fix permission on project files
 	sudo chown ${CURRENT_UID}:${CURRENT_GID} -R .
-	docker-compose exec server chown www-data:www-data -R var
+	$(DOCKER_SERVER) chown www-data:www-data -R var
 
 npm-install: ## npm install
-	docker-compose exec server npm install
+	$(DOCKER_SERVER) npm install
 
 npm-build: ## npm run build
-	docker-compose exec server npm run build
+	$(DOCKER_SERVER) npm run build
 
 npm-init:
-	docker-compose exec server npm init
+	$(DOCKER_SERVER) npm init
 
-clear-cache:
-	docker-compose exec server php bin/adminconsole cache:clear --no-warmup
-	docker-compose exec server php bin/adminconsole cache:clear --no-warmup --env=dev
-	docker-compose exec server php bin/websiteconsole cache:clear --no-warmup
-	docker-compose exec server php bin/websiteconsole cache:clear --no-warmup --env=dev
+clear-cache: ## clear all cache
+	$(MAKE) clear-admin-cache
+	$(MAKE) clear-website-cache
+
+clear-admin-cache: ## clear admin cache
+	$(DOCKER_SERVER) php bin/adminconsole cache:clear --no-warmup
+	$(DOCKER_SERVER) php bin/adminconsole cache:clear --no-warmup --env=dev
+
+clear-website-cache:
+	$(DOCKER_SERVER) php bin/websiteconsole cache:clear --no-warmup
+	$(DOCKER_SERVER) php bin/websiteconsole cache:clear --no-warmup --env=dev
+
+up: ## up docker stack
+	$(DOCKER_COMPOSE) up -d --build
+
+down: ## down docker stack
+	$(DOCKER_COMPOSE) down

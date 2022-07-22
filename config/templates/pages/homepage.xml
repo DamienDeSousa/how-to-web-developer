@@ -10,14 +10,16 @@
 
     <meta>
         <title lang="en">Homepage</title>
-        <title lang="fr_fr">Startseite</title>
+        <title lang="fr">Accueil</title>
+        <title lang="fr_fr">Accueil</title>
     </meta>
 
     <properties>
         <property name="title" type="text_line" mandatory="true">
             <meta>
                 <title lang="en">Title</title>
-                <title lang="de">Titel</title>
+                <title lang="fr">Titre</title>
+                <title lang="fr_fr">Titre</title>
             </meta>
             <params>
                 <param name="headline" value="true"/>
@@ -29,18 +31,11 @@
         <property name="url" type="resource_locator" mandatory="true">
             <meta>
                 <title lang="en">Resourcelocator</title>
-                <title lang="de">Adresse</title>
+                <title lang="fr">Uri</title>
+                <title lang="fr_fr">Uri</title>
             </meta>
 
             <tag name="sulu.rlp"/>
-        </property>
-        
-        <property name="jumbotron_image" type="single_media_selection">
-            <meta>
-                <title lang="en">Header Image</title>
-                <title lang="fr_fr">Image d'entête</title>
-                <title lang="fr">Image d'entête</title>
-            </meta>
         </property>
         
         <property name="search_bar_placeholder" type="text_line" mandatory="true">
